@@ -12,52 +12,121 @@
             padding: 0;
         }
         .topbar {
-            position: absolute;
+            /* 绝对定位会脱离标准流 */
+            /* position: absolute;
             left: 0;
-            top: 0;
+            top: 0; */
             width: 100%;
             height: 40px;
             background-color: #333333;
             font-size: 12px;
             line-height: 40px;
         }
+
         .topbar a {
             color: #b0b0b0;
             text-decoration: none;
             padding: 0px 5px;
         }
+
         .topbar a:hover {
             color: #ffffff;
         }
+
         .topbar .t1 {
             position: relative;
             left: 17%;
             /* margin-left: 17%; */
             /* margin-left: 340px; */
         }
-        .t1,.t2 {
+
+        .t1,
+        .t2 {
             display: inline-block;
         }
+
         .topbar .t2 {
             position: relative;
             left: 24%;
             /* margin-left: 12%; */
             /* margin-left: 230px; */
         }
+
         .topbar span {
             color: #424242;
         }
+
         .downloadapp {
             /* float: left; */
-            display: block;
+            width: 124px;
+            height: 148px;
+            display: none;
             position: absolute;
             top: 40px;
             left: 77%;
             background-color: #fff;
             border: 1px solid #424242;
+            text-align: center;
+        }
+        .downloadapp img {
+            margin-left: -15px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .downloadapp p {
+            margin-top: -10px;
+            font-size: 14px;
+        }
+
+        .downloadapp::before {
+            content: '';
+            position: relative;
+            top: -113px;
+            left: 30px;
+            width: 0;
+            height: 0;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+            border-bottom: 10px solid white;
         }
         .active {
-            display: none;
+            display: block;
+        }
+        .main-content {
+            width: 1226px;
+            height: 100px;
+            background-color: pink;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .main-left {
+            width: 56px;
+            height: 56px;
+            margin-top: 21px;
+        }
+        .logo {
+            width: 100%;
+            height: 100%;
+        }
+        .main-content div {
+            display: inline-block;
+        }
+        .main-middle {
+            margin-left: 75px;
+            font-size: 16px;
+        }
+        .main-middle ul li {
+            display: inline-block;
+            padding: 0 10px;
+        }```
+        .main-middle ul li a {
+            text-decoration: none;
+            color: black;
+        }
+        .main-middle ul li a span {
+            display: block;
+            height: 88px;
+            /* line-height: 88px; */
         }
     </style>
 </head>
@@ -89,7 +158,8 @@
                 <span>|</span>
                 <a href="#" class="download">下载app
                     <span class="downloadapp">
-                        <img src="https://i1.mifile.cn/f/i/17/appdownload/download.png?1" alt="小米商城" width="90" height="90">
+                        <img src="https://i1.mifile.cn/f/i/17/appdownload/download.png?1" alt="小米商城" width="90"
+                            height="90">
                         <p>小米商城APP</p>
                     </span>
                 </a>
@@ -108,21 +178,81 @@
         <!-- 主体内容 -->
         <div>
             <!-- 第一部分 -->
-            <div>
+            <div class="main-content">
                 <!-- 左侧图标 -->
-                <div></div>
+                <div class="main-left">
+                    <img src="https://s02.mifile.cn/assets/static/image/logo-mi2.png" alt="小米官网" class="logo">
+                </div>
                 <!-- 中间选项卡 -->
-                <div></div>
+                <div class="main-middle">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span>Xiaomi手机</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>Redmi 红米</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>电视</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>笔记本</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>平板</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>家电</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>路由器</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>服务</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>社区</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <!-- 右侧搜索  -->
+                <div></div>
             </div>
         </div>
         <!-- 底部 -->
-        <div></div>
+        <div>
+        </div>
     </div>
+
     <script>
-        var d = document.getElementsByClassName("download");
-        d.onmouseover = function(){
+        var d = document.getElementsByClassName("download")[0];
+        var dd = document.getElementsByClassName("downloadapp")[0];
+        console.log(d);
+        d.onmouseover = function () {
             console.log("我被触发了...");
+            dd.classList.add("active");
+        }
+        d.onmouseout = function () {
+            console.log("鼠标移出...");
+            dd.classList.remove("active");
         }
     </script>
 </body>
